@@ -203,93 +203,69 @@ select option{background:var(--bg3);}
 <div id="sidebar">
   <div id="logo">
     <h1>Chief<span>.</span></h1>
-    <p data-i18n="subtitle">Your AI assistant</p>
+    <p id="logo-subtitle">Your AI assistant</p>
     <select id="lang-select" onchange="setLang(this.value)" style="margin-top:8px;width:100%;font-size:11px;padding:4px 6px;background:var(--bg3);border:1px solid var(--border2);border-radius:6px;color:var(--text2);cursor:pointer;">
       <option value="en">🇬🇧 English</option>
       <option value="hr">🇭🇷 Hrvatski</option>
-      <option value="de">🇩🇪 Deutsch</option>
-      <option value="fr">🇫🇷 Français</option>
-      <option value="es">🇪🇸 Español</option>
-      <option value="it">🇮🇹 Italiano</option>
-      <option value="pt">🇵🇹 Português</option>
-      <option value="nl">🇳🇱 Nederlands</option>
-      <option value="pl">🇵🇱 Polski</option>
-      <option value="cs">🇨🇿 Čeština</option>
-      <option value="sk">🇸🇰 Slovenčina</option>
-      <option value="sl">🇸🇮 Slovenščina</option>
-      <option value="ro">🇷🇴 Română</option>
-      <option value="hu">🇭🇺 Magyar</option>
-      <option value="sv">🇸🇪 Svenska</option>
-      <option value="no">🇳🇴 Norsk</option>
-      <option value="da">🇩🇰 Dansk</option>
-      <option value="fi">🇫🇮 Suomi</option>
-      <option value="ru">🇷🇺 Русский</option>
-      <option value="uk">🇺🇦 Українська</option>
-      <option value="ar">🇸🇦 العربية</option>
-      <option value="zh">🇨🇳 中文</option>
-      <option value="ja">🇯🇵 日本語</option>
-      <option value="ko">🇰🇷 한국어</option>
-      <option value="tr">🇹🇷 Türkçe</option>
-      <option value="hi">🇮🇳 हिन्दी</option>
     </select>
   </div>
   <nav id="nav">
-    <div class="nav-section">Workspace</div>
-    <div class="nav-item active" onclick="show('dashboard',this)">
+    <div class="nav-section" id="ns-workspace">Workspace</div>
+    <div class="nav-item active" id="ni-dashboard" onclick="goTo('dashboard')">
       <svg class="icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="1" width="6" height="6" rx="1"/><rect x="9" y="1" width="6" height="6" rx="1"/><rect x="1" y="9" width="6" height="6" rx="1"/><rect x="9" y="9" width="6" height="6" rx="1"/></svg>
-      Dashboard
+      <span id="nl-dashboard">Dashboard</span>
     </div>
-    <div class="nav-item" data-panel="chat" onclick="show('chat',this)">
+    <div class="nav-item" id="ni-chat" onclick="goTo('chat')">
       <svg class="icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 10a1 1 0 01-1 1H5l-3 3V3a1 1 0 011-1h10a1 1 0 011 1v7z"/></svg>
-      AI Chat
+      <span id="nl-chat">AI Chat</span>
     </div>
-    <div class="nav-section">Google</div>
-    <div class="nav-item" onclick="show('gmail',this)">
+    <div class="nav-section" id="ns-google">Google</div>
+    <div class="nav-item" id="ni-gmail" onclick="goTo('gmail')">
       <svg class="icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="3" width="14" height="10" rx="1"/><path d="M1 4l7 5 7-5"/></svg>
-      Gmail
+      <span id="nl-gmail">Gmail</span>
       <span class="nav-badge" id="badge-gmail" style="display:none">0</span>
     </div>
-    <div class="nav-item" onclick="show('calendar',this)">
+    <div class="nav-item" id="ni-calendar" onclick="goTo('calendar')">
       <svg class="icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="2" width="14" height="13" rx="1"/><path d="M1 6h14M5 1v3M11 1v3"/></svg>
-      Calendar
+      <span id="nl-calendar">Calendar</span>
     </div>
-    <div class="nav-item" data-panel="drive" onclick="show('drive',this)">
+    <div class="nav-item" id="ni-drive" onclick="goTo('drive')">
       <svg class="icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 12L5.5 4h5L15 12H1z"/><path d="M5.5 4L8 12M10.5 4L8 12"/></svg>
-      Drive
+      <span id="nl-drive">Drive</span>
     </div>
-    <div class="nav-item" onclick="show('contacts',this)">
+    <div class="nav-item" id="ni-contacts" onclick="goTo('contacts')">
       <svg class="icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="5" r="3"/><path d="M1 14c0-3.3 3.1-6 7-6s7 2.7 7 6"/></svg>
-      Contacts
+      <span id="nl-contacts">Contacts</span>
       <span class="nav-badge" id="badge-contacts" style="display:none">0</span>
     </div>
-    <div class="nav-section">Tools</div>
-    <div class="nav-item" data-panel="datavis" onclick="show('datavis',this)">
+    <div class="nav-section" id="ns-tools">Tools</div>
+    <div class="nav-item" id="ni-datavis" onclick="goTo('datavis')">
       <svg class="icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="8" width="3" height="7"/><rect x="6" y="4" width="3" height="11"/><rect x="11" y="1" width="3" height="14"/></svg>
-      Data & Charts
+      <span id="nl-datavis">Data &amp; Charts</span>
     </div>
-    <div class="nav-item" onclick="show('tasks',this)">
+    <div class="nav-item" id="ni-tasks" onclick="goTo('tasks')">
       <svg class="icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 4h12M2 8h8M2 12h10"/><circle cx="13" cy="12" r="2"/></svg>
-      Tasks
+      <span id="nl-tasks">Tasks</span>
     </div>
-    <div class="nav-section">Settings</div>
-    <div class="nav-item" data-panel="setup" onclick="show('setup',this)">
+    <div class="nav-section" id="ns-settings">Settings</div>
+    <div class="nav-item" id="ni-setup" onclick="goTo('setup')">
       <svg class="icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="2"/><path d="M8 1v2M8 13v2M1 8h2M13 8h2M3.2 3.2l1.4 1.4M11.4 11.4l1.4 1.4M3.2 12.8l1.4-1.4M11.4 4.6l1.4-1.4"/></svg>
-      Setup
+      <span id="nl-setup">Setup</span>
     </div>
   </nav>
   <div id="conn-status">
-    <div class="conn-row"><div class="conn-dot" id="dot-gmail"></div>Gmail</div>
-    <div class="conn-row"><div class="conn-dot" id="dot-cal"></div>Calendar</div>
-    <div class="conn-row"><div class="conn-dot" id="dot-drive"></div>Drive</div>
-    <div class="conn-row"><div class="conn-dot" id="dot-sheets"></div>Sheets</div>
+    <div class="conn-row"><div class="conn-dot" id="dot-gmail"></div><span id="conn-gmail">Gmail</span></div>
+    <div class="conn-row"><div class="conn-dot" id="dot-cal"></div><span id="conn-cal">Calendar</span></div>
+    <div class="conn-row"><div class="conn-dot" id="dot-drive"></div><span id="conn-drive">Drive</span></div>
+    <div class="conn-row"><div class="conn-dot" id="dot-sheets"></div><span id="conn-sheets">Sheets</span></div>
   </div>
 </div>
 
 <div id="main">
   <div id="topbar">
     <h2 id="page-title">Dashboard</h2>
-    <button class="top-btn" onclick="show('setup',document.querySelector('[data-panel=setup]'))">⚙ Setup</button>
-    <button class="top-btn primary" onclick="show('chat',document.querySelector('[data-panel=chat]'))">+ Ask AI</button>
+    <button class="top-btn" onclick="goTo('setup')">⚙ <span id="tl-setup">Setup</span></button>
+    <button class="top-btn primary" onclick="goTo('chat')">+ <span id="tl-askai">Ask AI</span></button>
   </div>
   <div id="content">
 
@@ -458,7 +434,7 @@ select option{background:var(--bg3);}
     <div class="panel" id="panel-drive">
       <div style="display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap;">
         <button class="btn sm" onclick="loadDrive()">Refresh</button>
-        <button class="btn sm" onclick="show('datavis',document.querySelector('[data-panel=datavis]'))">Open in charts</button>
+        <button class="btn sm" onclick="goTo('datavis'))">Open in charts</button>
         <button class="btn sm" onclick="closeDrivePreview()">Clear preview</button>
       </div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;" id="drive-layout">
@@ -639,24 +615,7 @@ let uploadedFileContent = null;
 let mainChart = null;
 const PALETTE = ['#6c63ff','#22c55e','#f59e0b','#ef4444','#3b82f6','#ec4899','#14b8a6','#f97316'];
 
-// ── Navigation ────────────────────────────────────────────────
-function show(panel, el) {
-  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-  const panelEl = document.getElementById('panel-' + panel);
-  if (panelEl) panelEl.classList.add('active');
-  // Find nav item by data-panel or passed element
-  const navEl = el || document.querySelector('[data-panel="' + panel + '"]');
-  if (navEl) navEl.classList.add('active');
-  const titles = {
-    dashboard:'Dashboard', chat:'AI Chat', gmail:'Gmail',
-    calendar:'Calendar', drive:'Google Drive', datavis:'Data & Charts',
-    tasks:'Tasks', setup:'Setup', contacts:'Contacts'
-  };
-  document.getElementById('page-title').textContent = titles[panel] || panel;
-  if (panel === 'chat' && !chatHistory.length) initChat();
-  if (panel === 'dashboard') refreshDashboard();
-}
+// Navigation handled by goTo()
 
 // ── Setup & Auth ───────────────────────────────────────────────
 function setupSave() {
@@ -716,7 +675,7 @@ async function testConnections() {
   loadAll();
 }
 
-async function loadAll() {
+async async function loadAll() {
   await Promise.all([loadGmail(), loadCalendar(), loadDrive(), loadContacts()]);
   refreshDashboard();
 }
@@ -774,14 +733,14 @@ function renderContacts() {
 function composeToContact(email, name) {
   document.getElementById('to-field').value = email;
   document.querySelector('.nav-item[onclick*="gmail"]')?.click();
-  show('gmail', null);
+  goTo('gmail');
   document.getElementById('compose-box').style.display = 'block';
   document.getElementById('subject-field').focus();
 }
 
 function inviteContact(email, name) {
   document.getElementById('meet-guests').value = email;
-  show('calendar', null);
+  goTo('calendar');
   document.getElementById('meet-title').focus();
 }
 
@@ -1005,7 +964,7 @@ async function openFileInCharts(id, name) {
 ');
     document.getElementById('data-q').value = `Analyze and visualize data from "${name}"`;
     // Switch to data vis panel
-    show('datavis', null);
+    goTo('datavis');
     // Switch to paste mode
     document.querySelectorAll('#panel-datavis .chip').forEach(c=>c.classList.remove('on'));
     document.querySelectorAll('#panel-datavis .chip')[2].classList.add('on');
@@ -1016,7 +975,7 @@ async function openFileInCharts(id, name) {
 }
 
 function composeWithFile(name) {
-  show('gmail', null);
+  goTo('gmail');
   document.getElementById('compose-box').style.display = 'block';
   document.getElementById('subject-field').value = `Re: ${name}`;
   document.getElementById('body-field').value = `Hi,
@@ -1108,7 +1067,7 @@ async function callAI(prompt, withContext=false) {
     if (calData.length) ctx += 'Upcoming events:\n' + calData.slice(0,5).map(e=>`${e.summary} at ${e.start.dateTime||e.start.date}`).join('\n') + '\n\n';
     if (tasks.filter(t=>!t.done).length) ctx += 'Pending tasks:\n' + tasks.filter(t=>!t.done).map(t=>t.text).join('\n');
   }
-  const sys = `${window._langInstruction||''}You are a helpful AI chief of staff.${ctx?'\n\nUser context:\n'+ctx:''}`;
+  var sys = (window._langInstruction||'') + 'You are a helpful AI chief of staff.' + (ctx ? '\n\nUser context:\n'+ctx : '');
   try {
     const r = await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,system:sys,messages:[{role:'user',content:prompt}]})});
     const d = await r.json();
@@ -1351,255 +1310,166 @@ function renderVis(d) {
 }
 
 
-// ── i18n Language System ────────────────────────────────────────
-const LANGS = {
+// ── Navigation ────────────────────────────────────────────────
+function goTo(panel) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  var panelEl = document.getElementById('panel-' + panel);
+  var navEl = document.getElementById('ni-' + panel);
+  if (panelEl) panelEl.classList.add('active');
+  if (navEl) navEl.classList.add('active');
+  var titles = {
+    dashboard: L('nav_dashboard'), chat: L('nav_chat'), gmail: 'Gmail',
+    calendar: L('nav_calendar'), drive: 'Drive', datavis: L('nav_datavis'),
+    tasks: L('nav_tasks'), setup: L('nav_setup'), contacts: L('nav_contacts')
+  };
+  document.getElementById('page-title').textContent = titles[panel] || panel;
+  if (panel === 'chat' && !chatHistory.length) initChat();
+  if (panel === 'dashboard') refreshDashboard();
+}
+
+// keep old show() working too
+function show(panel, el) { goTo(panel); }
+
+// ── Language System (EN + HR only) ─────────────────────────────
+var TRANSLATIONS = {
   en: {
-    subtitle:'Your AI assistant',nav_dashboard:'Dashboard',nav_chat:'AI Chat',nav_gmail:'Gmail',
-    nav_calendar:'Calendar',nav_drive:'Drive',nav_data:'Data & Charts',nav_tasks:'Tasks',
-    nav_setup:'Setup',nav_contacts:'Contacts',nav_workspace:'Workspace',nav_google:'Google',
-    nav_tools:'Tools',nav_settings:'Settings',
-    dash_title:'Dashboard',chat_title:'AI Chat',gmail_title:'Gmail',cal_title:'Calendar',
-    drive_title:'Drive',data_title:'Data & Charts',tasks_title:'Tasks',setup_title:'Setup',contacts_title:'Contacts',
-    refresh:'Refresh',compose:'Compose',send:'Send',cancel:'Cancel',add:'Add',save:'Save',
-    inbox:'Inbox',upcoming:'Upcoming events',recent_emails:'Recent emails',ai_briefing:'AI briefing',
-    ai_summarize:'AI: summarize',ai_needs_reply:'AI: needs reply',ai_write:'AI: write this',
-    ai_review_week:'AI: review week',ai_plan_tomorrow:'AI: plan tomorrow',
-    schedule_meeting:'+ Schedule meeting',create_calendar:'Create in Google Calendar',
-    ai_generate_agenda:'AI: generate agenda',ai_quick_schedule:'AI quick schedule',
-    manual_details:'Manual details',meeting_title:'Title',meeting_date:'Date',meeting_time:'Time',
-    meeting_duration:'Duration',meeting_guests:'Guests (comma separated)',meeting_location:'Location / video link',
-    meeting_agenda:'Agenda / description',ai_analysis:'AI analysis',
-    search_contacts:'Search contacts...',email_btn:'Email',invite_btn:'Invite',
-    analyze_selected:'Analyze selected',open_charts:'Open in charts',
-    data_source:'Data source',web_search:'Web search',upload_file:'Upload file',paste_data:'Paste data',
-    auto_chart:'Auto-choose chart',bar_chart:'Bar chart',line_chart:'Line chart',
-    pie_chart:'Pie chart',donut_chart:'Donut chart',analyze_visualize:'Analyze + visualize',
-    add_task:'Add a new task...',ai_task_helper:'AI task helper',
-    google_connection:'Google account connection',sign_in_google:'Sign in with Google',
-    paste_redirect:'Paste the redirect URL',connect:'Connect',test_connections:'Test all connections',
-    unread_emails:'Unread emails',events_today:'Events today',drive_files:'Drive files',tasks_pending:'Tasks pending',
-    ask_anything:'Ask anything...',minutes_15:'15 minutes',minutes_30:'30 minutes',minutes_45:'45 minutes',
-    hour_1:'1 hour',hours_1_5:'1.5 hours',hours_2:'2 hours',
-    connected:'Connected',not_tested:'Not tested',no_contacts:'No contacts found',
-    ai_create_meeting:'AI: create this meeting',
+    subtitle: 'Your AI assistant',
+    nav_dashboard: 'Dashboard', nav_chat: 'AI Chat', nav_calendar: 'Calendar',
+    nav_datavis: 'Data & Charts', nav_tasks: 'Tasks', nav_setup: 'Setup',
+    nav_contacts: 'Contacts', ns_workspace: 'Workspace', ns_google: 'Google',
+    ns_tools: 'Tools', ns_settings: 'Settings',
+    refresh: 'Refresh', compose: 'Compose', send: 'Send', cancel: 'Cancel',
+    add: 'Add', inbox: 'Inbox', upcoming: 'Upcoming events',
+    recent_emails: 'Recent emails', ai_briefing: 'AI briefing',
+    ai_summarize: 'AI: summarize', ai_needs_reply: 'AI: needs reply',
+    ai_write: 'AI: write this', ai_review_week: 'AI: review week',
+    ai_plan_tomorrow: 'AI: plan tomorrow', schedule_meeting: '+ Schedule meeting',
+    create_calendar: 'Create in Google Calendar', ai_generate_agenda: 'AI: generate agenda',
+    ai_quick_schedule: 'AI quick schedule', manual_details: 'Manual details',
+    meeting_title: 'Title', meeting_date: 'Date', meeting_time: 'Time',
+    meeting_duration: 'Duration', meeting_guests: 'Guests (comma separated)',
+    meeting_location: 'Location / video link', meeting_agenda: 'Agenda / description',
+    ai_analysis: 'AI analysis', search_contacts: 'Search contacts...',
+    analyze_selected: 'Analyze selected', open_charts: 'Open in charts',
+    data_source: 'Data source', web_search: 'Web search', upload_file: 'Upload file',
+    paste_data: 'Paste data', analyze_visualize: 'Analyze + visualize',
+    add_task: 'Add a new task...', ai_task_helper: 'AI task helper',
+    google_connection: 'Google account connection', connect: 'Connect',
+    test_connections: 'Test all connections', unread_emails: 'Unread emails',
+    events_today: 'Events today', drive_files: 'Drive files', tasks_pending: 'Tasks pending',
+    ask_anything: 'Ask anything...', connected: 'Connected', not_tested: 'Not tested',
+    ai_create_meeting: 'AI: create this meeting', clear_preview: 'Clear preview',
+    your_files: 'Your files — click to preview', askai: 'Ask AI', setup_btn: 'Setup',
+    email_btn: 'Email', invite_btn: 'Invite'
   },
   hr: {
-    subtitle:'Vaš AI asistent',nav_dashboard:'Nadzorna ploča',nav_chat:'AI Chat',nav_gmail:'Gmail',
-    nav_calendar:'Kalendar',nav_drive:'Drive',nav_data:'Podaci i grafikoni',nav_tasks:'Zadaci',
-    nav_setup:'Postavke',nav_contacts:'Kontakti',nav_workspace:'Radni prostor',nav_google:'Google',
-    nav_tools:'Alati',nav_settings:'Postavke',
-    dash_title:'Nadzorna ploča',chat_title:'AI Chat',gmail_title:'Gmail',cal_title:'Kalendar',
-    drive_title:'Drive',data_title:'Podaci i grafikoni',tasks_title:'Zadaci',setup_title:'Postavke',contacts_title:'Kontakti',
-    refresh:'Osvježi',compose:'Novi e-mail',send:'Pošalji',cancel:'Odustani',add:'Dodaj',save:'Spremi',
-    inbox:'Pristigla pošta',upcoming:'Nadolazeći događaji',recent_emails:'Nedavni e-mailovi',ai_briefing:'AI pregled',
-    ai_summarize:'AI: sažetak',ai_needs_reply:'AI: treba odgovor',ai_write:'AI: napiši ovo',
-    ai_review_week:'AI: pregled tjedna',ai_plan_tomorrow:'AI: planiraj sutra',
-    schedule_meeting:'+ Zakaži sastanak',create_calendar:'Stvori u Google Kalendaru',
-    ai_generate_agenda:'AI: generiraj dnevni red',ai_quick_schedule:'AI brzo zakazivanje',
-    manual_details:'Ručni unos',meeting_title:'Naslov',meeting_date:'Datum',meeting_time:'Vrijeme',
-    meeting_duration:'Trajanje',meeting_guests:'Gosti (odvojeni zarezom)',meeting_location:'Lokacija / video link',
-    meeting_agenda:'Dnevni red / opis',ai_analysis:'AI analiza',
-    search_contacts:'Pretraži kontakte...',email_btn:'E-mail',invite_btn:'Pozovi',
-    analyze_selected:'Analiziraj odabrano',open_charts:'Otvori u grafikonima',
-    data_source:'Izvor podataka',web_search:'Web pretraga',upload_file:'Učitaj datoteku',paste_data:'Zalijepi podatke',
-    auto_chart:'Automatski odaberi grafikon',bar_chart:'Stupčasti grafikon',line_chart:'Linijski grafikon',
-    pie_chart:'Tortni grafikon',donut_chart:'Kružni grafikon',analyze_visualize:'Analiziraj + vizualiziraj',
-    add_task:'Dodaj novi zadatak...',ai_task_helper:'AI pomoćnik za zadatke',
-    google_connection:'Povezivanje Google računa',sign_in_google:'Prijava s Googleom',
-    paste_redirect:'Zalijepite URL preusmjeravanja',connect:'Poveži',test_connections:'Testiraj sve veze',
-    unread_emails:'Nepročitani e-mailovi',events_today:'Današnji događaji',drive_files:'Datoteke na Driveu',tasks_pending:'Zadaci na čekanju',
-    ask_anything:'Pitajte bilo što...',minutes_15:'15 minuta',minutes_30:'30 minuta',minutes_45:'45 minuta',
-    hour_1:'1 sat',hours_1_5:'1,5 sat',hours_2:'2 sata',
-    connected:'Povezano',not_tested:'Nije testirano',no_contacts:'Nema kontakata',
-    ai_create_meeting:'AI: stvori ovaj sastanak',
-  },
-  de: {
-    subtitle:'Ihr KI-Assistent',nav_dashboard:'Dashboard',nav_chat:'KI-Chat',nav_gmail:'Gmail',
-    nav_calendar:'Kalender',nav_drive:'Drive',nav_data:'Daten & Diagramme',nav_tasks:'Aufgaben',
-    nav_setup:'Einstellungen',nav_contacts:'Kontakte',nav_workspace:'Arbeitsbereich',nav_google:'Google',
-    nav_tools:'Werkzeuge',nav_settings:'Einstellungen',
-    dash_title:'Dashboard',chat_title:'KI-Chat',gmail_title:'Gmail',cal_title:'Kalender',
-    drive_title:'Drive',data_title:'Daten & Diagramme',tasks_title:'Aufgaben',setup_title:'Einstellungen',contacts_title:'Kontakte',
-    refresh:'Aktualisieren',compose:'Verfassen',send:'Senden',cancel:'Abbrechen',add:'Hinzufügen',save:'Speichern',
-    inbox:'Posteingang',upcoming:'Bevorstehende Ereignisse',recent_emails:'Aktuelle E-Mails',ai_briefing:'KI-Briefing',
-    ai_summarize:'KI: Zusammenfassung',ai_needs_reply:'KI: Antwort nötig',ai_write:'KI: Schreibe dies',
-    ai_review_week:'KI: Woche prüfen',ai_plan_tomorrow:'KI: Morgen planen',
-    schedule_meeting:'+ Meeting planen',create_calendar:'In Google Kalender erstellen',
-    ai_generate_agenda:'KI: Agenda erstellen',ai_quick_schedule:'KI Schnellplanung',
-    manual_details:'Manuelle Eingabe',meeting_title:'Titel',meeting_date:'Datum',meeting_time:'Uhrzeit',
-    meeting_duration:'Dauer',meeting_guests:'Gäste (kommagetrennt)',meeting_location:'Ort / Video-Link',
-    meeting_agenda:'Agenda / Beschreibung',ai_analysis:'KI-Analyse',
-    search_contacts:'Kontakte suchen...',email_btn:'E-Mail',invite_btn:'Einladen',
-    analyze_selected:'Ausgewählte analysieren',open_charts:'In Diagrammen öffnen',
-    data_source:'Datenquelle',web_search:'Websuche',upload_file:'Datei hochladen',paste_data:'Daten einfügen',
-    auto_chart:'Diagrammtyp automatisch',bar_chart:'Balkendiagramm',line_chart:'Liniendiagramm',
-    pie_chart:'Kreisdiagramm',donut_chart:'Ringdiagramm',analyze_visualize:'Analysieren & visualisieren',
-    add_task:'Neue Aufgabe hinzufügen...',ai_task_helper:'KI-Aufgabenhelfer',
-    google_connection:'Google-Konto verbinden',sign_in_google:'Mit Google anmelden',
-    paste_redirect:'Weiterleitungs-URL einfügen',connect:'Verbinden',test_connections:'Alle Verbindungen testen',
-    unread_emails:'Ungelesene E-Mails',events_today:'Heutige Ereignisse',drive_files:'Drive-Dateien',tasks_pending:'Ausstehende Aufgaben',
-    ask_anything:'Fragen Sie mich...',minutes_15:'15 Minuten',minutes_30:'30 Minuten',minutes_45:'45 Minuten',
-    hour_1:'1 Stunde',hours_1_5:'1,5 Stunden',hours_2:'2 Stunden',
-    connected:'Verbunden',not_tested:'Nicht getestet',no_contacts:'Keine Kontakte gefunden',
-    ai_create_meeting:'KI: Dieses Meeting erstellen',
-  },
-  fr: {
-    subtitle:'Votre assistant IA',nav_dashboard:'Tableau de bord',nav_chat:'Chat IA',nav_gmail:'Gmail',
-    nav_calendar:'Calendrier',nav_drive:'Drive',nav_data:'Données & Graphiques',nav_tasks:'Tâches',
-    nav_setup:'Configuration',nav_contacts:'Contacts',nav_workspace:'Espace de travail',nav_google:'Google',
-    nav_tools:'Outils',nav_settings:'Paramètres',
-    refresh:'Actualiser',compose:'Rédiger',send:'Envoyer',cancel:'Annuler',add:'Ajouter',save:'Enregistrer',
-    inbox:'Boîte de réception',upcoming:'Événements à venir',recent_emails:'E-mails récents',ai_briefing:'Briefing IA',
-    ai_summarize:'IA: résumer',ai_needs_reply:'IA: besoin de réponse',ai_write:'IA: rédiger',
-    ai_review_week:'IA: revoir la semaine',ai_plan_tomorrow:'IA: planifier demain',
-    schedule_meeting:'+ Planifier une réunion',create_calendar:'Créer dans Google Agenda',
-    ai_generate_agenda:'IA: générer un ordre du jour',ai_quick_schedule:'Planification rapide IA',
-    manual_details:'Détails manuels',meeting_title:'Titre',meeting_date:'Date',meeting_time:'Heure',
-    meeting_duration:'Durée',meeting_guests:'Invités (séparés par des virgules)',meeting_location:'Lieu / lien vidéo',
-    meeting_agenda:'Ordre du jour / description',ai_analysis:'Analyse IA',
-    search_contacts:'Rechercher des contacts...',email_btn:'E-mail',invite_btn:'Inviter',
-    analyze_selected:'Analyser la sélection',open_charts:'Ouvrir dans les graphiques',
-    data_source:'Source de données',web_search:'Recherche web',upload_file:'Télécharger un fichier',paste_data:'Coller des données',
-    auto_chart:'Choisir automatiquement',bar_chart:'Histogramme',line_chart:'Graphique linéaire',
-    pie_chart:'Camembert',donut_chart:'Graphique en anneau',analyze_visualize:'Analyser & visualiser',
-    add_task:'Ajouter une tâche...',ai_task_helper:'Assistant IA pour les tâches',
-    google_connection:'Connexion au compte Google',sign_in_google:'Se connecter avec Google',
-    paste_redirect:"Coller l'URL de redirection",connect:'Connecter',test_connections:'Tester toutes les connexions',
-    unread_emails:'E-mails non lus',events_today:"Événements d'aujourd'hui",drive_files:'Fichiers Drive',tasks_pending:'Tâches en attente',
-    ask_anything:'Demandez-moi...',minutes_15:'15 minutes',minutes_30:'30 minutes',minutes_45:'45 minutes',
-    hour_1:'1 heure',hours_1_5:'1h30',hours_2:'2 heures',
-    connected:'Connecté',not_tested:'Non testé',no_contacts:'Aucun contact trouvé',
-    ai_create_meeting:'IA: créer cette réunion',
-  },
-  es: {
-    subtitle:'Tu asistente de IA',nav_dashboard:'Panel',nav_chat:'Chat IA',nav_gmail:'Gmail',
-    nav_calendar:'Calendario',nav_drive:'Drive',nav_data:'Datos y gráficos',nav_tasks:'Tareas',
-    nav_setup:'Configuración',nav_contacts:'Contactos',nav_workspace:'Espacio de trabajo',nav_google:'Google',
-    nav_tools:'Herramientas',nav_settings:'Configuración',
-    refresh:'Actualizar',compose:'Redactar',send:'Enviar',cancel:'Cancelar',add:'Añadir',save:'Guardar',
-    inbox:'Bandeja de entrada',upcoming:'Próximos eventos',recent_emails:'Correos recientes',ai_briefing:'Resumen IA',
-    ai_summarize:'IA: resumir',ai_needs_reply:'IA: necesita respuesta',ai_write:'IA: escribir esto',
-    ai_review_week:'IA: revisar semana',ai_plan_tomorrow:'IA: planificar mañana',
-    schedule_meeting:'+ Programar reunión',create_calendar:'Crear en Google Calendar',
-    ai_generate_agenda:'IA: generar agenda',ai_quick_schedule:'Programación rápida IA',
-    manual_details:'Detalles manuales',meeting_title:'Título',meeting_date:'Fecha',meeting_time:'Hora',
-    meeting_duration:'Duración',meeting_guests:'Invitados (separados por comas)',meeting_location:'Ubicación / enlace de video',
-    meeting_agenda:'Agenda / descripción',ai_analysis:'Análisis IA',
-    search_contacts:'Buscar contactos...',email_btn:'Correo',invite_btn:'Invitar',
-    analyze_selected:'Analizar selección',open_charts:'Abrir en gráficos',
-    data_source:'Fuente de datos',web_search:'Búsqueda web',upload_file:'Subir archivo',paste_data:'Pegar datos',
-    auto_chart:'Elegir automáticamente',bar_chart:'Gráfico de barras',line_chart:'Gráfico de líneas',
-    pie_chart:'Gráfico circular',donut_chart:'Gráfico de anillo',analyze_visualize:'Analizar + visualizar',
-    add_task:'Añadir nueva tarea...',ai_task_helper:'Asistente IA de tareas',
-    google_connection:'Conexión de cuenta Google',sign_in_google:'Iniciar sesión con Google',
-    paste_redirect:'Pegar URL de redirección',connect:'Conectar',test_connections:'Probar todas las conexiones',
-    unread_emails:'Correos no leídos',events_today:'Eventos de hoy',drive_files:'Archivos de Drive',tasks_pending:'Tareas pendientes',
-    ask_anything:'Pregúntame...',minutes_15:'15 minutos',minutes_30:'30 minutos',minutes_45:'45 minutos',
-    hour_1:'1 hora',hours_1_5:'1,5 horas',hours_2:'2 horas',
-    connected:'Conectado',not_tested:'No probado',no_contacts:'No se encontraron contactos',
-    ai_create_meeting:'IA: crear esta reunión',
-  },
-  it:{subtitle:'Il tuo assistente AI',nav_dashboard:'Dashboard',nav_chat:'Chat AI',nav_gmail:'Gmail',nav_calendar:'Calendario',nav_drive:'Drive',nav_data:'Dati e grafici',nav_tasks:'Attività',nav_setup:'Impostazioni',nav_contacts:'Contatti',nav_workspace:'Area di lavoro',nav_google:'Google',nav_tools:'Strumenti',nav_settings:'Impostazioni',refresh:'Aggiorna',compose:'Scrivi',send:'Invia',cancel:'Annulla',add:'Aggiungi',save:'Salva',inbox:'Posta in arrivo',upcoming:'Prossimi eventi',recent_emails:'Email recenti',ai_briefing:'Briefing AI',ai_summarize:'AI: riassumi',ai_needs_reply:'AI: risposta necessaria',ai_write:'AI: scrivi questo',ai_review_week:'AI: rivedi settimana',ai_plan_tomorrow:'AI: pianifica domani',schedule_meeting:'+ Programma riunione',create_calendar:'Crea in Google Calendar',ai_generate_agenda:'AI: genera agenda',ai_quick_schedule:'Pianificazione rapida AI',manual_details:'Dettagli manuali',meeting_title:'Titolo',meeting_date:'Data',meeting_time:'Ora',meeting_duration:'Durata',meeting_guests:'Ospiti (separati da virgola)',meeting_location:'Luogo / link video',meeting_agenda:'Agenda / descrizione',ai_analysis:'Analisi AI',search_contacts:'Cerca contatti...',email_btn:'Email',invite_btn:'Invita',analyze_selected:'Analizza selezionati',open_charts:'Apri nei grafici',data_source:'Fonte dati',web_search:'Ricerca web',upload_file:'Carica file',paste_data:'Incolla dati',auto_chart:'Scegli automaticamente',bar_chart:'Grafico a barre',line_chart:'Grafico a linee',pie_chart:'Grafico a torta',donut_chart:'Grafico ad anello',analyze_visualize:'Analizza + visualizza',add_task:'Aggiungi attività...',ai_task_helper:'Assistente AI attività',google_connection:'Connessione account Google',sign_in_google:'Accedi con Google',paste_redirect:"Incolla l'URL di reindirizzamento",connect:'Connetti',test_connections:'Testa tutte le connessioni',unread_emails:'Email non lette',events_today:'Eventi oggi',drive_files:'File Drive',tasks_pending:'Attività in sospeso',ask_anything:'Chiedi qualcosa...',minutes_15:'15 minuti',minutes_30:'30 minuti',minutes_45:'45 minuti',hour_1:'1 ora',hours_1_5:'1,5 ore',hours_2:'2 ore',connected:'Connesso',not_tested:'Non testato',no_contacts:'Nessun contatto trovato',ai_create_meeting:'AI: crea questa riunione'},
-  pt:{subtitle:'Seu assistente de IA',nav_dashboard:'Painel',nav_chat:'Chat IA',nav_gmail:'Gmail',nav_calendar:'Calendário',nav_drive:'Drive',nav_data:'Dados e gráficos',nav_tasks:'Tarefas',nav_setup:'Configurações',nav_contacts:'Contatos',nav_workspace:'Espaço de trabalho',nav_google:'Google',nav_tools:'Ferramentas',nav_settings:'Configurações',refresh:'Atualizar',compose:'Redigir',send:'Enviar',cancel:'Cancelar',add:'Adicionar',save:'Salvar',inbox:'Caixa de entrada',upcoming:'Próximos eventos',recent_emails:'E-mails recentes',ai_briefing:'Briefing IA',ai_summarize:'IA: resumir',ai_needs_reply:'IA: precisa de resposta',ai_write:'IA: escrever isto',ai_review_week:'IA: revisar semana',ai_plan_tomorrow:'IA: planejar amanhã',schedule_meeting:'+ Agendar reunião',create_calendar:'Criar no Google Agenda',ai_generate_agenda:'IA: gerar pauta',ai_quick_schedule:'Agendamento rápido IA',manual_details:'Detalhes manuais',meeting_title:'Título',meeting_date:'Data',meeting_time:'Hora',meeting_duration:'Duração',meeting_guests:'Convidados (separados por vírgula)',meeting_location:'Local / link de vídeo',meeting_agenda:'Pauta / descrição',ai_analysis:'Análise IA',search_contacts:'Pesquisar contatos...',email_btn:'E-mail',invite_btn:'Convidar',analyze_selected:'Analisar selecionados',open_charts:'Abrir em gráficos',data_source:'Fonte de dados',web_search:'Pesquisa web',upload_file:'Enviar arquivo',paste_data:'Colar dados',auto_chart:'Escolher automaticamente',bar_chart:'Gráfico de barras',line_chart:'Gráfico de linhas',pie_chart:'Gráfico de pizza',donut_chart:'Gráfico de rosca',analyze_visualize:'Analisar + visualizar',add_task:'Adicionar tarefa...',ai_task_helper:'Assistente IA de tarefas',google_connection:'Conexão de conta Google',sign_in_google:'Entrar com Google',paste_redirect:'Colar URL de redirecionamento',connect:'Conectar',test_connections:'Testar todas as conexões',unread_emails:'E-mails não lidos',events_today:'Eventos hoje',drive_files:'Arquivos do Drive',tasks_pending:'Tarefas pendentes',ask_anything:'Pergunte-me...',minutes_15:'15 minutos',minutes_30:'30 minutos',minutes_45:'45 minutos',hour_1:'1 hora',hours_1_5:'1h30',hours_2:'2 horas',connected:'Conectado',not_tested:'Não testado',no_contacts:'Nenhum contato encontrado',ai_create_meeting:'IA: criar esta reunião'},
-  zh:{subtitle:'您的AI助手',nav_dashboard:'仪表板',nav_chat:'AI聊天',nav_gmail:'Gmail',nav_calendar:'日历',nav_drive:'云端硬盘',nav_data:'数据与图表',nav_tasks:'任务',nav_setup:'设置',nav_contacts:'联系人',nav_workspace:'工作区',nav_google:'Google',nav_tools:'工具',nav_settings:'设置',refresh:'刷新',compose:'撰写',send:'发送',cancel:'取消',add:'添加',save:'保存',inbox:'收件箱',upcoming:'即将到来的事件',recent_emails:'最近的邮件',ai_briefing:'AI简报',ai_summarize:'AI：摘要',ai_needs_reply:'AI：需要回复',ai_write:'AI：写这个',ai_review_week:'AI：回顾本周',ai_plan_tomorrow:'AI：规划明天',schedule_meeting:'+ 安排会议',create_calendar:'在Google日历中创建',ai_generate_agenda:'AI：生成议程',ai_quick_schedule:'AI快速安排',manual_details:'手动详情',meeting_title:'标题',meeting_date:'日期',meeting_time:'时间',meeting_duration:'时长',meeting_guests:'嘉宾（用逗号分隔）',meeting_location:'地点/视频链接',meeting_agenda:'议程/描述',ai_analysis:'AI分析',search_contacts:'搜索联系人...',email_btn:'邮件',invite_btn:'邀请',analyze_selected:'分析所选',open_charts:'在图表中打开',data_source:'数据源',web_search:'网页搜索',upload_file:'上传文件',paste_data:'粘贴数据',auto_chart:'自动选择图表',bar_chart:'柱状图',line_chart:'折线图',pie_chart:'饼图',donut_chart:'圆环图',analyze_visualize:'分析+可视化',add_task:'添加新任务...',ai_task_helper:'AI任务助手',google_connection:'连接Google账号',sign_in_google:'使用Google登录',paste_redirect:'粘贴重定向URL',connect:'连接',test_connections:'测试所有连接',unread_emails:'未读邮件',events_today:'今日事件',drive_files:'云端文件',tasks_pending:'待处理任务',ask_anything:'问我任何问题...',minutes_15:'15分钟',minutes_30:'30分钟',minutes_45:'45分钟',hour_1:'1小时',hours_1_5:'1.5小时',hours_2:'2小时',connected:'已连接',not_tested:'未测试',no_contacts:'未找到联系人',ai_create_meeting:'AI：创建此会议'},
-  ja:{subtitle:'AIアシスタント',nav_dashboard:'ダッシュボード',nav_chat:'AIチャット',nav_gmail:'Gmail',nav_calendar:'カレンダー',nav_drive:'ドライブ',nav_data:'データ＆グラフ',nav_tasks:'タスク',nav_setup:'設定',nav_contacts:'連絡先',nav_workspace:'ワークスペース',nav_google:'Google',nav_tools:'ツール',nav_settings:'設定',refresh:'更新',compose:'作成',send:'送信',cancel:'キャンセル',add:'追加',save:'保存',inbox:'受信トレイ',upcoming:'今後のイベント',recent_emails:'最近のメール',ai_briefing:'AIブリーフィング',ai_summarize:'AI：要約',ai_needs_reply:'AI：返信が必要',ai_write:'AI：これを書く',ai_review_week:'AI：今週を確認',ai_plan_tomorrow:'AI：明日を計画',schedule_meeting:'+ 会議を予約',create_calendar:'Googleカレンダーで作成',ai_generate_agenda:'AI：議題を生成',ai_quick_schedule:'AIクイックスケジュール',manual_details:'手動入力',meeting_title:'タイトル',meeting_date:'日付',meeting_time:'時間',meeting_duration:'期間',meeting_guests:'ゲスト（カンマ区切り）',meeting_location:'場所/ビデオリンク',meeting_agenda:'議題/説明',ai_analysis:'AI分析',search_contacts:'連絡先を検索...',email_btn:'メール',invite_btn:'招待',analyze_selected:'選択を分析',open_charts:'グラフで開く',data_source:'データソース',web_search:'ウェブ検索',upload_file:'ファイルをアップロード',paste_data:'データを貼り付け',auto_chart:'自動選択',bar_chart:'棒グラフ',line_chart:'折れ線グラフ',pie_chart:'円グラフ',donut_chart:'ドーナツグラフ',analyze_visualize:'分析＋可視化',add_task:'新しいタスクを追加...',ai_task_helper:'AIタスクヘルパー',google_connection:'Googleアカウント接続',sign_in_google:'Googleでサインイン',paste_redirect:'リダイレクトURLを貼り付け',connect:'接続',test_connections:'すべての接続をテスト',unread_emails:'未読メール',events_today:'本日のイベント',drive_files:'ドライブファイル',tasks_pending:'保留中のタスク',ask_anything:'何でも聞いてください...',minutes_15:'15分',minutes_30:'30分',minutes_45:'45分',hour_1:'1時間',hours_1_5:'1.5時間',hours_2:'2時間',connected:'接続済み',not_tested:'未テスト',no_contacts:'連絡先が見つかりません',ai_create_meeting:'AI：この会議を作成'},
+    subtitle: 'Vaš AI asistent',
+    nav_dashboard: 'Nadzorna ploča', nav_chat: 'AI Chat', nav_calendar: 'Kalendar',
+    nav_datavis: 'Podaci i grafikoni', nav_tasks: 'Zadaci', nav_setup: 'Postavke',
+    nav_contacts: 'Kontakti', ns_workspace: 'Radni prostor', ns_google: 'Google',
+    ns_tools: 'Alati', ns_settings: 'Postavke',
+    refresh: 'Osvježi', compose: 'Novi e-mail', send: 'Pošalji', cancel: 'Odustani',
+    add: 'Dodaj', inbox: 'Pristigla pošta', upcoming: 'Nadolazeći događaji',
+    recent_emails: 'Nedavni e-mailovi', ai_briefing: 'AI pregled',
+    ai_summarize: 'AI: sažetak', ai_needs_reply: 'AI: treba odgovor',
+    ai_write: 'AI: napiši ovo', ai_review_week: 'AI: pregled tjedna',
+    ai_plan_tomorrow: 'AI: planiraj sutra', schedule_meeting: '+ Zakaži sastanak',
+    create_calendar: 'Stvori u Google Kalendaru', ai_generate_agenda: 'AI: generiraj dnevni red',
+    ai_quick_schedule: 'AI brzo zakazivanje', manual_details: 'Ručni unos',
+    meeting_title: 'Naslov', meeting_date: 'Datum', meeting_time: 'Vrijeme',
+    meeting_duration: 'Trajanje', meeting_guests: 'Gosti (odvojeni zarezom)',
+    meeting_location: 'Lokacija / video link', meeting_agenda: 'Dnevni red / opis',
+    ai_analysis: 'AI analiza', search_contacts: 'Pretraži kontakte...',
+    analyze_selected: 'Analiziraj odabrano', open_charts: 'Otvori u grafikonima',
+    data_source: 'Izvor podataka', web_search: 'Web pretraga', upload_file: 'Učitaj datoteku',
+    paste_data: 'Zalijepi podatke', analyze_visualize: 'Analiziraj + vizualiziraj',
+    add_task: 'Dodaj novi zadatak...', ai_task_helper: 'AI pomoćnik za zadatke',
+    google_connection: 'Povezivanje Google računa', connect: 'Poveži',
+    test_connections: 'Testiraj sve veze', unread_emails: 'Nepročitani e-mailovi',
+    events_today: 'Današnji događaji', drive_files: 'Datoteke', tasks_pending: 'Zadaci na čekanju',
+    ask_anything: 'Pitajte bilo što...', connected: 'Povezano', not_tested: 'Nije testirano',
+    ai_create_meeting: 'AI: stvori ovaj sastanak', clear_preview: 'Očisti pregled',
+    your_files: 'Vaše datoteke — kliknite za pregled', askai: 'Pitaj AI', setup_btn: 'Postavke',
+    email_btn: 'E-mail', invite_btn: 'Pozovi'
+  }
 };
 
-// Fill missing keys from English
-Object.keys(LANGS).forEach(lang => {
-  if (lang !== 'en') Object.keys(LANGS.en).forEach(k => { if (!LANGS[lang][k]) LANGS[lang][k] = LANGS.en[k]; });
-});
+var currentLang = localStorage.getItem('chief-lang') || 'en';
 
-let currentLang = localStorage.getItem('chief-lang') || 'en';
-
-function t(key) { return (LANGS[currentLang] && LANGS[currentLang][key]) || LANGS.en[key] || key; }
+function L(key) {
+  var lang = TRANSLATIONS[currentLang] || TRANSLATIONS.en;
+  return lang[key] || TRANSLATIONS.en[key] || key;
+}
 
 function setLang(lang) {
   currentLang = lang;
   localStorage.setItem('chief-lang', lang);
-  document.getElementById('html-root').lang = lang;
   document.getElementById('lang-select').value = lang;
-  // RTL support
-  document.body.style.direction = ['ar','he'].includes(lang) ? 'rtl' : 'ltr';
-  applyTranslations();
+  applyLang();
 }
 
-function applyTranslations() {
-  const L = LANGS[currentLang] || LANGS.en;
+function applyLang() {
   // Subtitle
-  document.querySelectorAll('[data-i18n]').forEach(el => {
-    const key = el.getAttribute('data-i18n');
-    if (L[key]) el.textContent = L[key];
-  });
-  // Nav section labels
-  const navSections = document.querySelectorAll('.nav-section');
-  if (navSections[0]) navSections[0].textContent = L.nav_workspace;
-  if (navSections[1]) navSections[1].textContent = L.nav_google;
-  if (navSections[2]) navSections[2].textContent = L.nav_tools;
-  if (navSections[3]) navSections[3].textContent = L.nav_settings;
-  // Buttons by text content mapping
-  const btnMap = {
-    'Refresh':L.refresh,'Osvježi':L.refresh,'Actualiser':L.refresh,'Aggiorna':L.refresh,
-    'Compose':L.compose,'Novi e-mail':L.compose,'Rédiger':L.compose,
-    'AI: summarize':L.ai_summarize,'AI: needs reply':L.ai_needs_reply,
-    'AI: review week':L.ai_review_week,'AI: plan tomorrow':L.ai_plan_tomorrow,
-    'AI: write this':L.ai_write,'AI: generate agenda':L.ai_generate_agenda,
-    'AI: create this meeting':L.ai_create_meeting,
-    'Analyze selected':L.analyze_selected,'Open in charts':L.open_charts,
-    'Create in Google Calendar':L.create_calendar,
-    'Connect':L.connect,'Test all connections':L.test_connections,
-    '+ Schedule meeting':L.schedule_meeting,
+  var sub = document.getElementById('logo-subtitle');
+  if (sub) sub.textContent = L('subtitle');
+  // Nav labels
+  var navLabels = {
+    'nl-dashboard':'nav_dashboard','nl-chat':'nav_chat','nl-gmail':'Gmail',
+    'nl-calendar':'nav_calendar','nl-drive':'Drive','nl-contacts':'nav_contacts',
+    'nl-datavis':'nav_datavis','nl-tasks':'nav_tasks','nl-setup':'nav_setup'
   };
-  document.querySelectorAll('button.btn').forEach(btn => {
-    const txt = btn.textContent.trim();
-    if (btnMap[txt]) btn.textContent = btnMap[txt];
+  Object.keys(navLabels).forEach(function(id) {
+    var el = document.getElementById(id);
+    var key = navLabels[id];
+    if (el) el.textContent = (key === 'Gmail' || key === 'Drive') ? key : L(key);
   });
-  // Card titles
-  document.querySelectorAll('.card-title').forEach(el => {
-    const txt = el.textContent.trim();
-    const cardMap = {
-      'Recent emails':L.recent_emails,'AI briefing':L.ai_briefing,'Inbox':L.inbox,
-      'AI analysis':L.ai_analysis,'Upcoming events':L.upcoming,'Schedule a meeting':L.schedule_meeting.replace('+ ',''),
-      'AI quick schedule':L.ai_quick_schedule,'Manual details':L.manual_details,
-      'Your files — click to select for analysis':L.drive_files,'Data source':L.data_source,
-      'To-do list':L.nav_tasks,'AI task helper':L.ai_task_helper,
-      'Google account connection':L.google_connection,'Connection status':L.test_connections,
-    };
-    if (cardMap[txt]) el.textContent = cardMap[txt];
+  // Nav sections
+  var ns = document.getElementById('ns-workspace'); if(ns) ns.textContent = L('ns_workspace');
+  ns = document.getElementById('ns-google'); if(ns) ns.textContent = L('ns_google');
+  ns = document.getElementById('ns-tools'); if(ns) ns.textContent = L('ns_tools');
+  ns = document.getElementById('ns-settings'); if(ns) ns.textContent = L('ns_settings');
+  // Topbar
+  var tls = document.getElementById('tl-setup'); if(tls) tls.textContent = L('nav_setup');
+  var tlai = document.getElementById('tl-askai'); if(tlai) tlai.textContent = L('askai');
+  // Page title - retranslate current
+  var pt = document.getElementById('page-title');
+  if (pt) {
+    var activeNav = document.querySelector('.nav-item.active');
+    if (activeNav) {
+      var id = activeNav.id.replace('ni-','');
+      var titles = {
+        dashboard:L('nav_dashboard'),chat:L('nav_chat'),gmail:'Gmail',
+        calendar:L('nav_calendar'),drive:'Drive',datavis:L('nav_datavis'),
+        tasks:L('nav_tasks'),setup:L('nav_setup'),contacts:L('nav_contacts')
+      };
+      pt.textContent = titles[id] || pt.textContent;
+    }
+  }
+  // Conn status dots labels - use spans
+  var connLabels = currentLang === 'hr'
+    ? ['Gmail','Kalendar','Drive','Tablice']
+    : ['Gmail','Calendar','Drive','Sheets'];
+  ['conn-gmail','conn-cal','conn-drive','conn-sheets'].forEach(function(id, i) {
+    var el = document.getElementById(id);
+    if (el) el.textContent = connLabels[i];
   });
-  // Placeholders
-  const placeholderMap = {
-    'Add a new task...':L.add_task,'Search contacts...':L.search_contacts,
-    'Search contacts by name or email...':L.search_contacts,'Ask anything...':L.ask_anything,
-  };
-  document.querySelectorAll('input[placeholder], textarea[placeholder]').forEach(el => {
-    if (placeholderMap[el.placeholder]) el.placeholder = placeholderMap[el.placeholder];
-  });
-  // Page title
-  const titleMap = {
-    'Dashboard':L.dash_title,'AI Chat':L.chat_title,'Gmail':L.gmail_title,
-    'Calendar':L.cal_title,'Drive':L.drive_title,'Data & Charts':L.data_title,
-    'Tasks':L.tasks_title,'Setup':L.setup_title,'Contacts':L.contacts_title,
-  };
-  const pt = document.getElementById('page-title');
-  if (pt && titleMap[pt.textContent]) pt.textContent = titleMap[pt.textContent];
-  // AI assistant prompt system language instruction
-  window._langInstruction = currentLang !== 'en' ? `Always respond in the language with code: ${currentLang}. ` : '';
+  // Tell AI to respond in chosen language
+  window._langInstruction = currentLang === 'hr' ? 'Uvijek odgovaraj na hrvatskom jeziku. ' : '';
 }
-
-// Init language
-document.addEventListener('DOMContentLoaded', () => {
-  document.getElementById('lang-select').value = currentLang;
-  if (currentLang !== 'en') applyTranslations();
-});
 
 // ── Init ───────────────────────────────────────────────────────
 renderTasks();
 renderCalendar();
-document.getElementById('cal-grid') && renderCalendar();
+// Apply saved language on load
+document.getElementById('lang-select').value = currentLang;
+if (currentLang !== 'en') applyLang();
 // Auto-restore connection if token saved
 if (accessToken) {
-  ['gmail','cal','drive','sheets'].forEach(k => document.getElementById('dot-'+k).classList.add('ok'));
+  ['gmail','cal','drive','sheets'].forEach(function(k) {
+    var dot = document.getElementById('dot-'+k);
+    if (dot) dot.classList.add('ok');
+  });
   loadAll();
 }
 </script>
